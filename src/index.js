@@ -1,12 +1,30 @@
-// import _ from 'lodash';
-import myName from './myName.js';
+import Vue from 'vue';
 
-function component() {
-	const element = document.createElement('div');
+const Index = (() => {
+	const body = document.body;
 
-	// Using my function
-	element.innerHTML = myName('Andres');
-	return element;
-}
+	const render = () => {
+		let container = document.createElement("div");
+		container.id = "root";
+		let input = document.createElement("input");
+		input.type = "text";
+		input.id = "input";
+		let p = document.createElement("p");
+		p.innerHTML = "The value is : {{ message }}";
+		input.setAttribute("v-model", "message");
+		container.appendChild(input);
+		container.appendChild(p);
+		body.appendChild(container);
 
-document.body.appendChild(component());
+		new Vue({
+			el: '#root',
+			data: {
+				message: 'Hello, Vue!'
+			}
+		});
+	}
+
+	return { render };
+})();
+
+Index.render();
