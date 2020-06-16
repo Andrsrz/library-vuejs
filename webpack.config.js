@@ -11,4 +11,5 @@ module.exports = {
 			'vue$': 'vue/dist/vue.esm.js',
 		},
 	},
+	mode: 'development',
 };
