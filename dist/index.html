@@ -23,6 +23,24 @@
 			<h1 :class="className">Hello, Vue!</h1>
 			<button :class="{ 'is-loading': isLoading }" @click="toggleClass">Click Me</button>
 		</div>
+		<div id="root3">
+			<h1>{{ reversedMessage }}</h1>
+			<h2>Tasks</h2>
+			<ul>
+				<li v-for="task in tasks">
+					{{ task.description }}
+					<button @click="changeCompletition(task)">change completition</button>
+				</li>
+			</ul>
+			<h2>Incompleted Tasks</h2>
+			<ul>
+				<li v-for="task in incompletedTasks">{{ task.description }}</li>
+			</ul>
+			<h2>Completed Tasks</h2>
+			<ul>
+				<li v-for="task in completedTasks">{{ task.description }}</li>
+			</ul>
+		</div>
 		<script src="main.js"></script>
 	</body>
 </html>
