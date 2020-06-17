@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import './style/style.css';
 
 const Index = (() => {
 	const body = document.body;
@@ -58,9 +59,38 @@ const Index = (() => {
 		});
 	}
 
+	const styles = () => {
+		let container = document.createElement("div");
+		container.id = "root2";
+		let element = document.createElement("h1");
+		element.setAttribute("v-bind:class", "className0");
+		element.innerHTML = "Hello, Vue!";
+		let button = document.createElement("button");
+		button.setAttribute("v-bind:class", "{ 'is-loading': isLoading }");
+		button.setAttribute("v-on:click", "toggleClass");
+		button.innerHTML = "Click Me";
+		container.appendChild(element);
+		container.appendChild(button);
+		body.appendChild(container)
+
+		new Vue({
+			el: '#root2',
+			data: {
+				className0: 'color-red',
+				isLoading: false
+			},
+			methods: {
+				toggleClass(){
+					this.isLoading = true
+				}
+			}
+		});
+	}
+
 	const render = () => {
 		dataBinding();
 		workingWithLists();
+		styles();
 	}
 
 	return { render };
