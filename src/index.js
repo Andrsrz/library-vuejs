@@ -3,7 +3,7 @@ import Vue from 'vue';
 const Index = (() => {
 	const body = document.body;
 
-	const render = () => {
+	const dataBinding = () => {
 		let container = document.createElement("div");
 		container.id = "root";
 		let input = document.createElement("input");
@@ -22,6 +22,10 @@ const Index = (() => {
 				message: 'Hello, Vue!'
 			}
 		});
+	}
+
+	const render = () => {
+		dataBinding();
 	}
 
 	return { render };
