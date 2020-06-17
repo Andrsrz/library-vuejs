@@ -8,6 +8,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	<body>
+		<div id="root0">
+			<input type="text" id="input" v-model="message">
+			<p>The value is: {{ message }}</p>
+		</div>
+		<div id="root1">
+			<ul>
+				<li v-for="game in games">{{ game }}</li>
+			</ul>
+			<input type="text" v-model="newGame">
+			<button @click="addGame">Add Game</button>
+		</div>
+		<div id="root2">
+			<h1 :class="className">Hello, Vue!</h1>
+			<button :class="{ 'is-loading': isLoading }" @click="toggleClass">Click Me</button>
+		</div>
 		<script src="main.js"></script>
 	</body>
 </html>
