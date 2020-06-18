@@ -32,6 +32,21 @@ const Index = (() => {
 		}
 	});
 
+	Vue.component('library',{
+		props: ['books'],
+		data() {
+			return {
+			}
+		},
+		template: `
+			<div>
+				<book v-for="book in books">{{ book }}</book>
+			</div>
+		`,
+		methods: {
+		}
+	});
+
 	new Vue({
 		el: '#main'
 	});

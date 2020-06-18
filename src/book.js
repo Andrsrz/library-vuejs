@@ -6,7 +6,7 @@ class Book{
 		this.read = read;
 	}
 
-	info = () => {
+	info(){
 		let readStr = "";
 		if(this.read === false)
 			readStr = "not read yet";

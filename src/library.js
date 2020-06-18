@@ -3,7 +3,7 @@ class Library{
 		this.books = books ? books : [];
 	}
 
-	addBook = (book) => {
+	addBook(book){
 		this.books.push(book);
 	}
 };
