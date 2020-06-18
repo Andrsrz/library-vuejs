@@ -1,7 +1,50 @@
 import Vue from 'vue';
+import { Library } from './library.js';
+import { Book } from './book.js';
 import './style/style.css';
 
 const Index = (() => {
+	const myLibrary = new Library();
+
+	Vue.component('book', {
+		props: [],
+		data() {
+			return {
+				info: 'Test'
+			};
+		},
+		template: `
+			<div>
+				<h2>{{ info }}</h2>
+				<span>
+					<button @click="changeRead"></button>
+					<button @click="deleteBook"></button>
+				</span>
+			</div>
+		`,
+		methods: {
+			changeRead(){
+				alert("read");
+			},
+			deleteBook(){
+				alert("delete");
+			}
+		}
+	});
+
+	new Vue({
+		el: '#main'
+	});
+
+
+	const render = () => {
+		// dataBinding();
+		// workingWithLists();
+		// styles();
+		// computedProperties();
+		// components();
+	}
+
 	const dataBinding = () => {
 		new Vue({
 			el: '#root0',
@@ -127,14 +170,6 @@ const Index = (() => {
 		new Vue({
 			el: '#root4',
 		});
-	}
-
-	const render = () => {
-		dataBinding();
-		workingWithLists();
-		styles();
-		computedProperties();
-		components();
 	}
 
 	return { render };
