@@ -77,11 +77,22 @@ const Index = (() => {
 		});
 	}
 
+	Vue.component('task', {
+		template: '<li><slot></slot></li>'
+	});
+
+	const components = () => {
+		new Vue({
+			el: '#root4',
+		});
+	}
+
 	const render = () => {
 		dataBinding();
 		workingWithLists();
 		styles();
 		computedProperties();
+		components();
 	}
 
 	return { render };
