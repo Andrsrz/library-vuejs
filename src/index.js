@@ -6,6 +6,24 @@ import './style/style.css';
 const Index = (() => {
 	const myLibrary = new Library();
 
+	Vue.component('library-header', {
+		props: [],
+		data(){
+			return{
+			}
+		},
+		template: `
+			<div>
+				<button @click="renderAddBook">Add Book</button>
+			</div>
+		`,
+		methods: {
+			renderAddBook(){
+				alert("render add book");
+			}
+		}
+	});
+
 	Vue.component('book', {
 		props: [],
 		data() {
@@ -39,6 +57,7 @@ const Index = (() => {
 			}
 		},
 		template: `
+			<library-header></library-header>
 			<div>
 				<book v-for="book in books">{{ book }}</book>
 			</div>
