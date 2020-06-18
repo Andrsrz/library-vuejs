@@ -81,6 +81,48 @@ const Index = (() => {
 		template: '<li><slot></slot></li>'
 	});
 
+	Vue.component('tasks-list', {
+		template: `
+			<div>
+				<task v-for="task in tasks">{{ task.description }}</task>
+			</div>
+		`,
+		data(){
+			return {
+				tasks: [
+					{ description: "Play Don't Starve", completed: false },
+					{ description: "Learn Vue", completed: false },
+					{ description: "Push to Github", completed: true },
+					{ description: "Conquer the World", completed: false },
+					{ description: "Watch Community", completed: false }
+				]
+			}
+		}
+	});
+
+	Vue.component('message', {
+		props: ['title', 'body'],
+		data() {
+			return {
+				isVisible: true
+			};
+		},
+		template: `
+			<div class="message" v-show="isVisible">
+				<div>
+					{{ title }}
+					<button type="button" @click="hideModal">x</button>
+				</div>
+				<div>{{ body }}</div>
+			</div>
+		`,
+		methods: {
+			hideModal(){
+				this.isVisible = false;
+			}
+		}
+	});
+
 	const components = () => {
 		new Vue({
 			el: '#root4',
