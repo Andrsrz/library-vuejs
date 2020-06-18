@@ -5,6 +5,8 @@ import './style/style.css';
 
 const Index = (() => {
 	const myLibrary = new Library();
+	const myBook = new Book("The Hobbit", "J.R.R. Tolkien", "300", true);
+	myLibrary.addBook(myBook);
 
 	Vue.component('library-header', {
 		props: [],
@@ -28,12 +30,11 @@ const Index = (() => {
 		props: [],
 		data() {
 			return {
-				info: 'Test'
 			};
 		},
 		template: `
 			<div>
-				<h2>{{ info }}</h2>
+				<slot></slot>
 				<span>
 					<button @click="changeRead"></button>
 					<button @click="deleteBook"></button>
@@ -51,13 +52,19 @@ const Index = (() => {
 	});
 
 	Vue.component('library',{
-		props: ['books'],
+		props: [],
 		data() {
 			return {
+				books: [
+					{ description: "Play Don't Starve", completed: false },
+					{ description: "Learn Vue", completed: false },
+					{ description: "Push to Github", completed: true },
+					{ description: "Conquer the World", completed: false },
+					{ description: "Watch Community", completed: false }
+				]
 			}
 		},
 		template: `
-			<library-header></library-header>
 			<div>
 				<book v-for="book in books">{{ book }}</book>
 			</div>
@@ -66,17 +73,19 @@ const Index = (() => {
 		}
 	});
 
-	new Vue({
-		el: '#main'
-	});
-
-
 	const render = () => {
-		// dataBinding();
-		// workingWithLists();
-		// styles();
-		// computedProperties();
-		// components();
+		new Vue({
+			el: '#main',
+			data: {
+				books: myLibrary.books
+			}
+		});
+
+		dataBinding();
+		workingWithLists();
+		styles();
+		computedProperties();
+		components();
 	}
 
 	const dataBinding = () => {
