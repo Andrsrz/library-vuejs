@@ -12,57 +12,6 @@
 			<library-header></library-header>
 			<library></library>
 		</main>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<hr>
-		<div id="root0">
-			<input type="text" id="input" v-model="message">
-			<p>The value is: {{ message }}</p>
-		</div>
-		<hr>
-		<div id="root1">
-			<ul>
-				<li v-for="game in games">{{ game }}</li>
-			</ul>
-			<input type="text" v-model="newGame">
-			<button @click="addGame">Add Game</button>
-		</div>
-		<hr>
-		<div id="root2">
-			<h1 :class="className">Hello, Vue!</h1>
-			<button :class="{ 'is-loading': isLoading }" @click="toggleClass">Click Me</button>
-		</div>
-		<hr>
-		<div id="root3">
-			<h1>{{ reversedMessage }}</h1>
-			<h2>Tasks</h2>
-			<ul>
-				<li v-for="task in tasks">
-					{{ task.description }}
-					<button @click="changeCompletition(task)">change completition</button>
-				</li>
-			</ul>
-			<h2>Incompleted Tasks</h2>
-			<ul>
-				<li v-for="task in incompletedTasks">{{ task.description }}</li>
-			</ul>
-			<h2>Completed Tasks</h2>
-			<ul>
-				<li v-for="task in completedTasks">{{ task.description }}</li>
-			</ul>
-		</div>
-		<hr>
-		<div id="root4">
-			<tasks-list></tasks-list>
-			<message title="Hello, Vue!" body="This is a Vue component"></message>
-			<message title="Hello, Vue!" body="This is a another Vue component"></message>
-		</div>
-		<hr>
 		<script src="main.js"></script>
 	</body>
 </html>
