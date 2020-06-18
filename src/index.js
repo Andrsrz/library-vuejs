@@ -51,22 +51,16 @@ const Index = (() => {
 		}
 	});
 
-	Vue.component('library',{
+	Vue.component('library', {
 		props: [],
 		data() {
 			return {
-				books: [
-					{ description: "Play Don't Starve", completed: false },
-					{ description: "Learn Vue", completed: false },
-					{ description: "Push to Github", completed: true },
-					{ description: "Conquer the World", completed: false },
-					{ description: "Watch Community", completed: false }
-				]
-			}
+				books: myLibrary.books
+			};
 		},
 		template: `
 			<div>
-				<book v-for="book in books">{{ book }}</book>
+				<book v-for="book in books">{{ book.title }}</book>
 			</div>
 		`,
 		methods: {
