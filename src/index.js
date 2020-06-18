@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import { Library } from './library.js';
 import { Book } from './book.js';
+import "nes.css/css/nes.min.css";
 import './style/style.css';
 
 const Index = (() => {
@@ -15,8 +16,8 @@ const Index = (() => {
 			}
 		},
 		template: `
-			<div>
-				<button @click="renderAddBook">Add Book</button>
+			<div class="header">
+				<button type="button" class="nes-btn is-primary" @click="renderAddBook">Add Book</button>
 			</div>
 		`,
 		methods: {
@@ -33,11 +34,11 @@ const Index = (() => {
 			};
 		},
 		template: `
-			<div>
+			<div class="book nes-container is-rounded">
 				<slot></slot>
 				<span>
-					<button @click="changeRead">Read?</button>
-					<button @click="deleteBook">Delete</button>
+					<button type="button" class="nes-btn is-primary" @click="changeRead">Read?</button>
+					<button type="button" class="nes-btn is-warning" @click="deleteBook">Delete</button>
 				</span>
 			</div>
 		`,
@@ -60,7 +61,7 @@ const Index = (() => {
 		},
 		template: `
 			<div>
-				<book v-for="book in books">{{ book.title }}</book>
+				<book v-for="book in books">{{ book.info() }}</book>
 			</div>
 		`,
 		methods: {

@@ -1,12 +1,22 @@
-.color-red {
-	color: red;
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "Press Start 2P";
 }
 
-.is-loading {
-	background: green;
-}
-
-.message {
-	border: 1px solid #333;
+.header {
 	margin: 10px;
+}
+
+.book {
+	margin: 10px !important;
+	padding: 0 !important;
+	width: 300px;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-content: center;
+	text-align: left;
 }
