@@ -13,17 +13,41 @@ const Index = (() => {
 		props: [],
 		data(){
 			return{
+				isVisible: false
 			}
 		},
 		template: `
 			<div class="header">
 				<button type="button" class="nes-btn is-primary" @click="renderAddBook">Add Book</button>
+				<form-add-book v-show="isVisible"></form-add-book>
 			</div>
 		`,
 		methods: {
 			renderAddBook(){
-				alert("render add book");
+				console.log("render add book");
+				if(this.isVisible == false)
+					this.isVisible = true;
+				else
+					this.isVisible = false;
 			}
+		}
+	});
+
+	Vue.component('form-add-book', {
+		props: [],
+		data() {
+			return {
+			};
+		},
+		template: `
+			<form>
+				<div class="nes-field">
+					<label for="name_field">Your name</label>
+					<input type="text" id="name_field" class="nes-input">
+				</div>
+			</form>
+		`,
+		methods: {
 		}
 	});
 
