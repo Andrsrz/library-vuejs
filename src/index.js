@@ -6,9 +6,6 @@ import './style/style.css';
 
 const Index = (() => {
 	const myLibrary = new Library();
-	/* Default Book */
-	const myBook = new Book("The Hobbit", "J.R.R. Tolkien", "300", true);
-	myLibrary.addBook(myBook);
 
 	Vue.component('library-header', {
 		props: [],
@@ -80,6 +77,7 @@ const Index = (() => {
 					const myBook = new Book(this.title, this.author, this.pages, this.read);
 					myLibrary.addBook(myBook);
 					this.clearInputs();
+					saveToStorage();
 				}else{
 					alert("Fill all required fields");
 				}
@@ -117,9 +115,12 @@ const Index = (() => {
 					this.book.read = true;
 				else
 					this.book.read = false;
+
+				saveToStorage();
 			},
 			deleteBook(){
 				myLibrary.books.splice(this.index, 1);
+				saveToStorage();
 			}
 		}
 	});
@@ -142,7 +143,73 @@ const Index = (() => {
 		}
 	});
 
+	const storageAvailable = (type) => {
+		var storage;
+		try {
+			storage = window[type];
+			var x = '__storage_test__';
+			storage.setItem(x, x);
+			storage.removeItem(x);
+			return true;
+		}
+		catch(e) {
+			return e instanceof DOMException && (
+				// everything except Firefox
+				e.code === 22 ||
+				// Firefox
+				e.code === 1014 ||
+				// test name field too, because code might not be present
+				// everything except Firefox
+				e.name === 'QuotaExceededError' ||
+				// Firefox
+				e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+				// acknowledge QuotaExceededError only if there's something already stored
+				(storage && storage.length !== 0);
+		}
+	}
+
+	const checkLocalStorage = () => {
+		if(storageAvailable('localStorage')){
+			if(getFromStorage()){
+			}
+		}else {
+			alert("WARNING! Your browser doesn't support local storage. To use this app \
+				change the browser.");
+		}
+	}
+
+	const saveToStorage = () => {
+		localStorage.setItem('libraryArr', JSON.stringify(myLibrary.books));
+		getFromStorage();
+	}
+
+	const getFromStorage = () => {
+		let storage = false;
+		myLibrary.books = [];
+
+		let booksLocalStorage = localStorage.getItem('libraryArr');
+		let books = JSON.parse(booksLocalStorage);
+
+		if(books != null){
+			for(let i = 0; i < books.length; i++){
+				storage = true;
+				/* Get attributes from the JSON */
+				let book = new Book(books[i].title, books[i].author, books[i].pages, books[i].read);
+				myLibrary.books.push(book);
+			}
+		}
+
+		return storage;
+	}
+
 	const render = () => {
+		if(checkLocalStorage() == false){
+			/* Default Book */
+			const myBook = new Book("The Hobbit", "J.R.R. Tolkien", "300", true);
+			myLibrary.addBook(myBook);
+			saveToStorage();
+		}
+
 		new Vue({
 			el: '#main',
 			data: {
