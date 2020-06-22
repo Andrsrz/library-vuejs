@@ -24,7 +24,6 @@ const Index = (() => {
 		`,
 		methods: {
 			renderAddBook(){
-				console.log("render add book");
 				if(this.isVisible == false)
 					this.isVisible = true;
 				else
@@ -34,11 +33,6 @@ const Index = (() => {
 	});
 
 	Vue.component('form-add-book', {
-		props: [],
-		data() {
-			return {
-			};
-		},
 		template: `
 			<form>
 				<div class="nes-field">
@@ -46,9 +40,7 @@ const Index = (() => {
 					<input type="text" id="name_field" class="nes-input">
 				</div>
 			</form>
-		`,
-		methods: {
-		}
+		`
 	});
 
 	Vue.component('book', {
