@@ -13,13 +13,15 @@ const Index = (() => {
 		props: [],
 		data(){
 			return{
-				isVisible: true,
-				title: 'X'
+				isVisible: false,
+				title: 'Add Book',
+				nesbtnClass: 'nes-btn',
+				typebtnClass: 'is-primary',
 			}
 		},
 		template: `
 			<div class="header">
-				<button type="button" class="nes-btn is-primary" @click="renderAddBook">{{ title }}</button>
+				<button type="button" :class="[nesbtnClass, typebtnClass]" @click="renderAddBook">{{ title }}</button>
 				<br><br>
 				<form-add-book v-show="isVisible"></form-add-book>
 			</div>
@@ -29,9 +31,11 @@ const Index = (() => {
 				if(this.isVisible == false){
 					this.isVisible = true;
 					this.title = 'X';
+					this.typebtnClass = 'is-error';
 				}else{
 					this.isVisible = false;
 					this.title = 'Add Book';
+					this.typebtnClass = 'is-primary';
 				}
 			}
 		}
@@ -98,8 +102,8 @@ const Index = (() => {
 			<div class="book nes-container is-rounded">
 				<slot></slot>
 				<span>
-					<button type="button" class="nes-btn is-primary" @click="changeRead">Read?</button>
-					<button type="button" class="nes-btn is-warning" @click="deleteBook">Delete</button>
+					<button type="button" class="nes-btn is-warning" @click="changeRead">Read?</button>
+					<button type="button" class="nes-btn is-error" @click="deleteBook">Delete</button>
 				</span>
 			</div>
 		`,
