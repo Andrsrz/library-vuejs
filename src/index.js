@@ -136,7 +136,16 @@ const Index = (() => {
 	});
 
 	Vue.component('library-footer', {
-		template: ``
+		template: `
+			<div class="footer">
+				<a><i class="nes-icon github is-medium" @click="openGithub" title="Show me the code"></i></a>
+			</div>
+		`,
+		methods: {
+			openGithub(){
+				window.open("https://github.com/Andrsrz/library-vuejs", "_blank");
+			}
+		}
 	});
 
 	const storageAvailable = (type) => {
@@ -207,9 +216,11 @@ const Index = (() => {
 		}
 
 		new Vue({
-			el: '#main',
-			data: {
-			}
+			el: '#main'
+		});
+
+		new Vue({
+			el: '#footer'
 		});
 	}
 
