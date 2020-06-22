@@ -13,22 +13,26 @@ const Index = (() => {
 		props: [],
 		data(){
 			return{
-				isVisible: true
+				isVisible: false,
+				title: 'Add Book'
 			}
 		},
 		template: `
 			<div class="header">
-				<button type="button" class="nes-btn is-primary" @click="renderAddBook">Add Book</button>
+				<button type="button" class="nes-btn is-primary" @click="renderAddBook">{{ title }}</button>
 				<br><br>
 				<form-add-book v-show="isVisible"></form-add-book>
 			</div>
 		`,
 		methods: {
 			renderAddBook(){
-				if(this.isVisible == false)
+				if(this.isVisible == false){
 					this.isVisible = true;
-				else
+					this.title = 'X';
+				}else{
 					this.isVisible = false;
+					this.title = 'Add Book';
+				}
 			}
 		}
 	});
