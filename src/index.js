@@ -8,7 +8,6 @@ const Index = (() => {
 	const myLibrary = new Library();
 
 	Vue.component('library-header', {
-		props: [],
 		data(){
 			return{
 				isVisible: false,
@@ -96,10 +95,6 @@ const Index = (() => {
 			book: Object,
 			index: Number
 		},
-		data() {
-			return {
-			};
-		},
 		template: `
 			<div class="book nes-container is-rounded">
 				<slot></slot>
@@ -126,7 +121,6 @@ const Index = (() => {
 	});
 
 	Vue.component('library', {
-		props: [],
 		data() {
 			return {
 				books: myLibrary.books
@@ -138,9 +132,11 @@ const Index = (() => {
 					{{ book.info() }}
 				</book>
 			</div>
-		`,
-		methods: {
-		}
+		`
+	});
+
+	Vue.component('library-footer', {
+		template: ``
 	});
 
 	const storageAvailable = (type) => {
