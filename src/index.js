@@ -34,7 +34,7 @@ const Index = (() => {
 
 	Vue.component('form-add-book', {
 		template: `
-			<form>
+			<form class="form">
 				<div class="nes-field">
 					<label for="name_field">Your name</label>
 					<input type="text" id="name_field" class="nes-input">
