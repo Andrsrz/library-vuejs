@@ -44,3 +44,9 @@ html, body {
 	align-content: center;
 	text-align: left;
 }
+
+@media all and (max-width: 800px) {
+	.form {
+		width: 75%;
+	}
+}
