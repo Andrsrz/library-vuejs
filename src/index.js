@@ -13,8 +13,8 @@ const Index = (() => {
 		props: [],
 		data(){
 			return{
-				isVisible: false,
-				title: 'Add Book'
+				isVisible: true,
+				title: 'X'
 			}
 		},
 		template: `
@@ -38,29 +38,54 @@ const Index = (() => {
 	});
 
 	Vue.component('form-add-book', {
+		data() {
+			return {
+				title: '',
+				author: '',
+				pages: 1,
+				read: false
+			}
+		},
 		template: `
 			<form class="form">
 				<div class="nes-field">
 					<label for="title">Title</label>
-					<input type="text" id="title" class="nes-input" required>
+					<input type="text" id="title" class="nes-input" v-model="title" required>
 				</div>
 				<div class="nes-field">
 					<label for="author">Author</label>
-					<input type="text" id="author" class="nes-input" required>
+					<input type="text" id="author" class="nes-input" v-model="author" required>
 				</div>
 				<div class="nes-field">
 					<label for="pages">Pages</label>
-					<input type="number" id="pages" class="nes-input" min="1" required>
+					<input type="number" id="pages" class="nes-input" min="1" v-model.number="pages" required>
 				</div>
 				<div class="nes-field submit-button-container">
 					<label>
-						<input type="checkbox" class="nes-checkbox" checked />
+						<input type="checkbox" class="nes-checkbox" v-model="read" checked />
 						<span>Read It?</span>
 					</label>
-					<input type="submit" class="nes-btn is-success submit-button" value="Add">
+					<button @click="addBook" type="button" class="nes-btn is-success submit-button">Add</button>
 				</div>
 			</form>
-		`
+		`,
+		methods: {
+			addBook(){
+				if(this.title != '' && this.author != '' && this.pages > 1){
+					const myBook = new Book(this.title, this.author, this.pages, this.read);
+					myLibrary.addBook(myBook);
+					this.clearInputs();
+				}else{
+					alert("Fill all required fields");
+				}
+			},
+			clearInputs(){
+				this.title = '';
+				this.author = '';
+				this.pages = 1;
+				this.read = false;
+			}
+		}
 	});
 
 	Vue.component('book', {
@@ -108,7 +133,6 @@ const Index = (() => {
 		new Vue({
 			el: '#main',
 			data: {
-				books: myLibrary.books
 			}
 		});
 	}
