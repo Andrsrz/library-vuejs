@@ -13,12 +13,13 @@ const Index = (() => {
 		props: [],
 		data(){
 			return{
-				isVisible: false
+				isVisible: true
 			}
 		},
 		template: `
 			<div class="header">
 				<button type="button" class="nes-btn is-primary" @click="renderAddBook">Add Book</button>
+				<br><br>
 				<form-add-book v-show="isVisible"></form-add-book>
 			</div>
 		`,
@@ -36,8 +37,23 @@ const Index = (() => {
 		template: `
 			<form class="form">
 				<div class="nes-field">
-					<label for="name_field">Your name</label>
-					<input type="text" id="name_field" class="nes-input">
+					<label for="title">Title</label>
+					<input type="text" id="title" class="nes-input" required>
+				</div>
+				<div class="nes-field">
+					<label for="author">Author</label>
+					<input type="text" id="author" class="nes-input" required>
+				</div>
+				<div class="nes-field">
+					<label for="pages">Pages</label>
+					<input type="number" id="pages" class="nes-input" required>
+				</div>
+				<div class="nes-field submit-button-container">
+					<label>
+						<input type="checkbox" class="nes-checkbox" checked />
+						<span>Read It?</span>
+					</label>
+					<input type="submit" class="nes-btn is-success submit-button" value="Add">
 				</div>
 			</form>
 		`

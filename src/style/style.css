@@ -19,8 +19,19 @@ html, body {
 .form {
 	display: flex;
 	flex-flow: column nowrap;
-	justify-content: center;
-	align-items: flex-start;
+	align-content: center;
+	text-align: left;
+	margin: auto;
+	width: 50%;
+}
+
+.submit-button-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.submit-button {
+	margin-top: 10px;
 }
 
 .book {
