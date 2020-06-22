@@ -43,6 +43,13 @@ html, body {
 	justify-content: center;
 	align-content: center;
 	text-align: left;
+	align-self: center;
+}
+
+.library {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
 }
 
 @media all and (max-width: 800px) {

@@ -121,7 +121,7 @@ const Index = (() => {
 			};
 		},
 		template: `
-			<div>
+			<div class="library">
 				<book v-for="book in books">{{ book.info() }}</book>
 			</div>
 		`,
