@@ -94,7 +94,8 @@ const Index = (() => {
 
 	Vue.component('book', {
 		props: {
-			book: Object
+			book: Object,
+			index: Number
 		},
 		data() {
 			return {
@@ -117,7 +118,7 @@ const Index = (() => {
 					this.book.read = false;
 			},
 			deleteBook(){
-				alert("delete");
+				myLibrary.books.splice(this.index, 1);
 			}
 		}
 	});
@@ -131,7 +132,7 @@ const Index = (() => {
 		},
 		template: `
 			<div class="library">
-				<book v-for="book in books" :book="book">
+				<book v-for="(book, index) in books" :book="book" :index="index">
 					{{ book.info() }}
 				</book>
 			</div>
