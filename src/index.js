@@ -6,6 +6,7 @@ import './style/style.css';
 
 const Index = (() => {
 	const myLibrary = new Library();
+	/* Default Book */
 	const myBook = new Book("The Hobbit", "J.R.R. Tolkien", "300", true);
 	myLibrary.addBook(myBook);
 
