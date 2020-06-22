@@ -46,7 +46,7 @@ const Index = (() => {
 				</div>
 				<div class="nes-field">
 					<label for="pages">Pages</label>
-					<input type="number" id="pages" class="nes-input" required>
+					<input type="number" id="pages" class="nes-input" min="1" required>
 				</div>
 				<div class="nes-field submit-button-container">
 					<label>
