@@ -4,6 +4,14 @@
 This is a redo with [VueJS](https://vuejs.org/) framework of my original [library app](https://andrsrz.github.io/library/).
 You can see the code in [here](https://github.com/Andrsrz/library).
 
+## Getting Started
+If you've already used my previous app, the same localStorage is going to be
+displayed in this app.
+
+* Add Books
+* Change Read Status
+* Delete Books
+
 ## What have I learned?
 * Vue JS Framework
   * Instance
