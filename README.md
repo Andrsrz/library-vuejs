@@ -7,6 +7,8 @@ You can see the code in [here](https://github.com/Andrsrz/library).
 ## What have I learned?
 * Vue JS Framework
   * Instance
+  * Class Binding
+  * List Rendering
   * Components
   * Events
 * [NES.css](https://nostalgic-css.github.io/NES.css/)
