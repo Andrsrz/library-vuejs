@@ -10,6 +10,7 @@ You can see the code in [here](https://github.com/Andrsrz/library).
   * Class Binding
   * List Rendering
   * Components
+    * Handling Props
   * Events
 * [NES.css](https://nostalgic-css.github.io/NES.css/)
 
